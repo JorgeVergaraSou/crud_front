@@ -1,0 +1,35 @@
+https://bluuweb.dev/nestjs/frontend-next.html
+
+1.- Para iniciar un proyecto Next debemos usar el comando y seguir esos pasos:
+        npx create-next-app@latest .
+        Need to install the following packages:
+        create-next-app@14.1.0
+        Ok to proceed? (y) y
+        √ Would you like to use TypeScript? ... No / Yes
+        √ Would you like to use ESLint? ... No / Yes
+        √ Would you like to use Tailwind CSS? ... No / Yes
+        √ Would you like to use `src/` directory? ... No / Yes
+        √ Would you like to use App Router? (recommended) ... No / Yes
+        √ Would you like to customize the default import alias (@/*)? ... No / Yes
+        Creating a new Next.js app in C:\AppServ\www\crud\front.
+
+2.- Instalamos Bootstrap:
+        npm install bootstrap@5.3.1
+        al usar bootstrap, podemos quitar el codigo del archivo globals.css
+
+ 3.- en page.tsx quitamos el codigo existente y lo reemplazamos por uno personalizado.
+
+ 4.- ejecutamos el codigo con el comando: npm run dev y visualizamos en localhost
+
+ 5.- Instalamos Next Auth con el comando: 
+        npm install next-auth
+
+6.- Debemos crear una carpeta con una ruta para Next
+        app->api->auth 
+
+El Hook useSession solo funciona si se configuro un proveedor 
+
+el archivo .env.local usaremos las variables de entorno
+
+Para crear rutas protegidas usaremos un middleware, en donde iran todas las rutas que necesitan 
+        autenticacion
