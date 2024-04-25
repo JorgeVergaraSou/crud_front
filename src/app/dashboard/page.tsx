@@ -5,19 +5,16 @@ import { useState } from "react";
 
 const Dashboard = () => {
 
-
   const { data: session, status } = useSession();
 
-  const [catsData, setCatsData] = useState<Cat[] | null>(null);
-
-
+  const [catsData, setCatsData] = useState<Breed[] | null>(null);
 
   if (status === "loading") {
     return <p>Loading...</p>;
   }
 
   const getCats = async () => {
-    const res = await fetch(`${process.env.NEXT_PUBLIC_BACKEND_URL}/cats`, {
+    const res = await fetch(`${process.env.NEXT_PUBLIC_BACKEND_URL}/breeds`, {
         method: "GET",
         headers: {
             "Content-Type": "application/json",
@@ -48,7 +45,7 @@ const Dashboard = () => {
         {catsData && (
           <ul>
             {catsData.map(cat => (
-              <li key={cat.id}>Nombre: {cat.name} -- Edad: {cat.age} </li> // Renderiza el nombre de cada gato
+              <li key={cat.idBreed}>Nombre: {cat.nameBreed} --  </li> // Renderiza el nombre de cada gato
             ))}
           </ul>
         )}
