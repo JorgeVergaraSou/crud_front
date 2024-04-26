@@ -1,4 +1,4 @@
-/* SI NO QUIERES USAR CONFIGURACIONES GLOBALES PUEDES QUITAR TODO ESTE CODIGO
+
 :root {
   --max-width: 1100px;
   --border-radius: 12px;
@@ -106,4 +106,12 @@ a {
     color-scheme: dark;
   }
 }
-*/
+.backGroundDiv{
+  background-color: #f5313140;
+}
+.cardDiv{
+margin: 25px;
+background-color: #61abe740;
+display: inline-block;
+font-size: xx-small;
+}

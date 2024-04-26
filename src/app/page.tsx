@@ -2,6 +2,7 @@
 
 import { useSession } from "next-auth/react";
 import { useState, useEffect } from "react";
+import Image from 'next/image'
 
 const HomePage = () => {
   
@@ -27,21 +28,22 @@ const HomePage = () => {
       }
     };
     
-    if (status === "authenticated") {
+    if (status === "loading") {
       getPost(); // Llama a la función getPost cuando el estado de la sesión es "authenticated"
     }
   }, [status]); // Se ejecuta este efecto cada vez que cambia el estado de la sesión
 
   if (status === "loading") {
     return <p>Loading...</p>;
+   
   }
 
   return (
     <div>
-      <h1 className="text-primary">Home Page</h1>
-      <div>
+    
+      <div className="backGroundDiv">
       {postData && postData.map(post => (
-  <div key={post.idPost}>
+  <div className="cardDiv" key={post.idPost}>
     <p>Título: {post.title}</p>
     <p>Contenido: {post.content}</p>
     <ul>
@@ -49,7 +51,14 @@ const HomePage = () => {
         <li key={pet.idPet}>
           <p>Nombre de la mascota: {pet.namePet}</p>
           <p>Descripción: {pet.description}</p>
-          {/* Renderizar otras propiedades de la mascota si es necesario */}
+          <Image
+      src={`/img/${pet.image}`}
+      width={150}
+      height={150}
+      alt="Picture of the author"
+    />
+  
+         
         </li>
       ))}
     </ul>

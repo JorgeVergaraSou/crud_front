@@ -3,5 +3,6 @@ interface Pet {
     namePet: string;
     isActive: number;
     description: string;
-    softDeleteDat: Date
+    softDeleteDat: Date;
+    image: string
   }
