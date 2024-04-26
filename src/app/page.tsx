@@ -7,7 +7,7 @@ const HomePage = () => {
   
   const { status } = useSession();
   const [postData, setPostData] = useState<Post[] | null>(null);
-
+  //const [pets] = useState<Pet[] | null>(null) ;
   useEffect(() => {
     const getPost = async () => {
       try {
@@ -40,16 +40,22 @@ const HomePage = () => {
     <div>
       <h1 className="text-primary">Home Page</h1>
       <div>
-        {postData && (
-          <ul>
-            {postData.map(post => (
-              <li key={post.idPost}>
-                <p>Título: {post.title}</p>
-                <p>Contenido: {post.content}</p> {post.pets}
-              </li>
-            ))}
-          </ul>
-        )}
+      {postData && postData.map(post => (
+  <div key={post.idPost}>
+    <p>Título: {post.title}</p>
+    <p>Contenido: {post.content}</p>
+    <ul>
+      {post && post.pets.map(pet => (
+        <li key={pet.idPet}>
+          <p>Nombre de la mascota: {pet.namePet}</p>
+          <p>Descripción: {pet.description}</p>
+          {/* Renderizar otras propiedades de la mascota si es necesario */}
+        </li>
+      ))}
+    </ul>
+  </div>
+))}
+
       </div>
     </div>
   );

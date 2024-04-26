@@ -7,5 +7,5 @@ interface Post {
     isActive: number;
     softDeleteDate: Date;
     userIdFk: number;
-    pets: []
+    pets: Pet[];
 }

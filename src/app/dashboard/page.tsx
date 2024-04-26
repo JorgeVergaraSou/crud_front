@@ -45,7 +45,7 @@ const Dashboard = () => {
         {catsData && (
           <ul>
             {catsData.map(cat => (
-              <li key={cat.idBreed}>Nombre: {cat.nameBreed} --  </li> // Renderiza el nombre de cada gato
+              <li key={cat.idBreed}>Nombre: {cat.nameBreed}   </li> // Renderiza el nombre de cada gato
             ))}
           </ul>
         )}
