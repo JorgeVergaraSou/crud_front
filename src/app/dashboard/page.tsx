@@ -37,8 +37,8 @@ const Dashboard = () => {
       <pre>
         <code>{JSON.stringify(session, null, 2)}</code>
       </pre>
-      <h2>correo {session?.user.email} </h2>
-      <h2>nivel {session?.user.role} </h2>
+      <h2>correo: {session?.user.email} ;</h2>
+      <h2>nivel {session?.user.role} ;</h2>
       <h1> {msg} </h1>
       <button onClick={getCats} className="btn btn-primary">Get Cats</button>
       <div>

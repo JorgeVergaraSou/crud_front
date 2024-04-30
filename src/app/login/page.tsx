@@ -32,9 +32,10 @@ const LoginPage = () => {
   };
 
   return (
-    <div>
+    <div className="center">
+      <div >
       <h1>Login</h1>
-      <form onSubmit={handleSubmit}>
+      <form className="formwidth"  onSubmit={handleSubmit}>
         <input
           type="email"
           placeholder="test@test.com"
@@ -68,6 +69,7 @@ const LoginPage = () => {
           </ul>
         </div>
       )}
+      </div>
     </div>
   );
 };

@@ -28,7 +28,7 @@ const HomePage = () => {
       }
     };
     
-    if (status === "loading") {
+    if (status === "unauthenticated" || status === "authenticated") {
       getPost(); // Llama a la función getPost cuando el estado de la sesión es "authenticated"
     }
   }, [status]); // Se ejecuta este efecto cada vez que cambia el estado de la sesión
@@ -43,12 +43,12 @@ const HomePage = () => {
     
       <div className="backGroundDiv">
       {postData && postData.map(post => (
-  <div className="cardDiv" key={post.idPost}>
-    <p>Título: {post.title}</p>
-    <p>Contenido: {post.content}</p>
-    <ul>
+  <div className=" grid" key={post.idPost}>
+    <p> {post.title}</p>
+    <p> {post.content}</p>
+    
       {post && post.pets.map(pet => (
-        <li key={pet.idPet}>
+        <div key={pet.idPet}>
           <p>Nombre de la mascota: {pet.namePet}</p>
           <p>Descripción: {pet.description}</p>
           <Image
@@ -59,9 +59,9 @@ const HomePage = () => {
     />
   
          
-        </li>
+        </div>
       ))}
-    </ul>
+   
   </div>
 ))}
 
