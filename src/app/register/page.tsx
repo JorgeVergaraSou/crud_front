@@ -5,7 +5,8 @@ import { useRouter } from "next/navigation";
 import { useState } from "react";
 
 const RegisterPage = () => {
-  const [errors, setErrors] = useState<string[]>([]);
+  const [errors,  setErrors] = useState<string[]>([]);
+  const [message, setMessage] = useState<string[]>([]);
   const [name, setName] = useState<string>("test");
   const [email, setEmail] = useState<string>("test@test.com");
   const [password, setPassword] = useState<string>("123123");
@@ -33,9 +34,27 @@ const RegisterPage = () => {
     const responseAPI = await res.json();
 
     if (!res.ok) {
-      setErrors(responseAPI.message);
+      // Verificar si responseAPI.message es un string
+      console.log(responseAPI.message);
+      if (typeof responseAPI.message === 'string') {
+        setMessage(responseAPI.message.split(","));
+      } else if (Array.isArray(responseAPI.message)) {
+        // Si responseAPI.message es un array, asumimos que ya contiene mensajes separados
+        setMessage(responseAPI.message);
+      } else {
+        // Si responseAPI.message es un objeto, tratamos de obtener sus valores
+        setMessage(Object.values(responseAPI.message));
+      }
       return;
     }
+    
+    /*
+    if (!res.ok) {
+      console.log(responseAPI.message);
+      setMessage(responseAPI.message.split(","));
+      return;
+    }
+*/
 
     const responseNextAuth = await signIn("credentials", {
       email,
@@ -52,7 +71,7 @@ const RegisterPage = () => {
   };
 
   return (
-    <div>
+    <div className="centradito">
       <h1>Register</h1>
       <form onSubmit={handleSubmit}>
         <input
@@ -86,6 +105,16 @@ const RegisterPage = () => {
           Register
         </button>
       </form>
+
+      {message.length > 0 && (
+        <div className="alert alert-danger mt-2">
+          <ul className="mb-0">
+            {message.map((msg) => (
+              <li key={msg}>{msg}</li>
+            ))}
+          </ul>
+        </div>
+      )}
 
       {errors.length > 0 && (
         <div className="alert alert-danger mt-2">
