@@ -106,15 +106,7 @@ a {
     color-scheme: dark;
   }
 }
-.backGroundDiv{
-  background-color: #f5313140;
-}
-.cardDiv{
-margin: 25px;
-background-color: #61abe740;
-display: inline-block;
-font-size: xx-small;
-}
+
 .form-signin {
   max-width: 330px;
   padding: 1rem;
@@ -136,20 +128,23 @@ font-size: xx-small;
   border-top-right-radius: 0;
 }
 
-.center{
-  text-align: center;
-  width: 80%;
- margin: auto;
-  background-color: #54d6ff33;
-}
-.formwidth{
-  width: 50%;
-
-  margin: auto;
-}
 .centradito{
   display: flex;
   flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+.backGroundDiv{
+  background-color: #f5313140;
+}
+.cardDiv{
+background-color: #61abe740;
+font-size: xx-small;
+}
+
+.divCardPet{
+  display: flex;
+  flex-direction: row;
   align-items: center;
   justify-content: center;
 }

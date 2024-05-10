@@ -32,10 +32,10 @@ const LoginPage = () => {
   };
 
   return (
-    <div className="center">
-      <div >
+    
+      <div className="centradito" >
       <h1>Login</h1>
-      <form className="formwidth"  onSubmit={handleSubmit}>
+      <form onSubmit={handleSubmit}>
         <input
           type="email"
           placeholder="test@test.com"
@@ -70,7 +70,7 @@ const LoginPage = () => {
         </div>
       )}
       </div>
-    </div>
+    
   );
 };
 export default LoginPage;
