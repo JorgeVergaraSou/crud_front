@@ -10,7 +10,7 @@ const Dashboard = () => {
   const [catsData, setCatsData] = useState<Breed[] | null>(null);
 
   if (status === "loading") {
-    return <p>Loading...</p>;
+    return <div className="loader-container"><div className="loader"></div> <div className="loader2"></div></div>;
   }
 
   const getCats = async () => {
@@ -34,11 +34,10 @@ const Dashboard = () => {
   return (
     <div>
       <h1>Dashboard</h1>
-      <pre>
-        <code>{JSON.stringify(session, null, 2)}</code>
-      </pre>
+
       <h2>correo: {session?.user.email} ;</h2>
       <h2>nivel {session?.user.role} ;</h2>
+      token {session?.user.token}
       <h1> {msg} </h1>
       <button onClick={getCats} className="btn btn-primary">Get Cats</button>
       <div>

@@ -1,15 +1,19 @@
 "use client";
 
-import { signIn } from "next-auth/react";
+import { signIn, useSession } from "next-auth/react";
 import { useRouter } from "next/navigation";
 import { useState } from "react";
 
 const LoginPage = () => {
+  const { status } = useSession();
   const [errors, setErrors] = useState<string[]>([]);
   const [email, setEmail] = useState("test@test.com");
   const [password, setPassword] = useState("123123");
   const router = useRouter();
 
+  if (status === "loading") {
+    return <div className="loader-container"><div className="loader"></div> <div className="loader2"></div></div>;
+  }
   const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
     setErrors([]);
@@ -19,9 +23,6 @@ const LoginPage = () => {
       password,
       redirect: false,
     });
-
- 
-    
 
     if (responseNextAuth?.error) {
       setErrors(responseNextAuth.error.split(","));

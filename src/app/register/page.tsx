@@ -1,16 +1,19 @@
 "use client";
 
-import { signIn } from "next-auth/react";
+import { signIn, useSession } from "next-auth/react";
 import { useRouter } from "next/navigation";
 import { useState } from "react";
 
 const RegisterPage = () => {
+  const { status } = useSession();
   const [errors,  setErrors] = useState<string[]>([]);
   const [message, setMessage] = useState<string[]>([]);
   const [name, setName] = useState<string>("test");
   const [email, setEmail] = useState<string>("test@test.com");
   const [password, setPassword] = useState<string>("123123");
   const router = useRouter();
+
+
 
   const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
@@ -48,14 +51,6 @@ const RegisterPage = () => {
       return;
     }
     
-    /*
-    if (!res.ok) {
-      console.log(responseAPI.message);
-      setMessage(responseAPI.message.split(","));
-      return;
-    }
-*/
-
     const responseNextAuth = await signIn("credentials", {
       email,
       password,
@@ -65,6 +60,10 @@ const RegisterPage = () => {
     if (responseNextAuth?.error) {
       setErrors(responseNextAuth.error.split(","));
       return;
+    }
+
+    if (status === "loading") {
+      return <div className="loader-container"><div className="loader"></div> <div className="loader2"></div></div>;
     }
 
     router.push("/dashboard");

@@ -13,7 +13,7 @@ const Navbar = () => {
           href="/"
           className="btn btn-primary btn-sm"
         >
-          Home
+          Inicio
         </Link>
         {session?.user ? (
           <>
@@ -21,13 +21,21 @@ const Navbar = () => {
               href="/dashboard"
               className="btn btn-primary btn-sm"
             >
-              Dashboard
+             Perfil
             </Link>
+
+            <Link
+              href="/dashboard#newpost"
+              className="btn btn-primary btn-sm"
+            >
+             Crear Publicacion
+            </Link>
+
             <button
               onClick={() => signOut()}
               className="btn btn-danger btn-sm"
             >
-              Signout
+              Cerrar Sesión
             </button>
           </>
         ) : (
@@ -36,13 +44,13 @@ const Navbar = () => {
               href="/login"
               className="btn btn-primary btn-sm"
             >
-              Login
+              Iniciar Sesión
             </Link>
             <Link
               href="/register"
               className="btn btn-primary btn-sm"
             >
-              Register
+              Registrarse
             </Link>
           </>
         )}
