@@ -26,6 +26,7 @@ export default function RootLayout({
         {children}
         </SessionAuthProvider> 
         </main>
+        <footer>Sitio creado por Vicky Lorena Jorge</footer>
         </body>
     </html>
   );

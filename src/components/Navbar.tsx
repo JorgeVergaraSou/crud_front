@@ -25,7 +25,7 @@ const Navbar = () => {
             </Link>
 
             <Link
-              href="/dashboard#newpost"
+              href="/dashboard/newpost"
               className="btn btn-primary btn-sm"
             >
              Crear Publicacion
