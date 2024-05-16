@@ -8,7 +8,7 @@ const HomePage = () => {
 
   const { status } = useSession();
   const [postData, setPostData] = useState<Post[] | null>(null);
-  //const [pets] = useState<Pet[] | null>(null) ;
+
   useEffect(() => {
     const getPost = async () => {
       try {

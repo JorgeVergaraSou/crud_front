@@ -8,26 +8,12 @@ const Dashboard = () => {
 
   const { data: session, status } = useSession();
   const [userData, setUserData] = useState<UserData | null>(null);
-  const [catsData, setCatsData] = useState<Breed[] | null>(null);
+  const [petsData, setPetsData] = useState<Pet[] | null>(null);
   const [error, setError] = useState<string[]>([]);
 
   if (status === "loading") {
-    return <div className="loader-container"><div className="loader"></div> <div className="loader2"></div></div>;
+    <div className="loader"></div>;
   }
-
-  const getCats = async () => {
-    const res = await fetch(`${process.env.NEXT_PUBLIC_BACKEND_URL}/breeds`, {
-      method: "GET",
-      headers: {
-        "Content-Type": "application/json",
-        authorization: `Bearer ${session?.user?.token}`,
-      },
-    });
-    const dataResultCats = await res.json();
-    setCatsData(dataResultCats); // Actualiza el estado con los datos obtenidos    
-  };
-
-
 
   useEffect(() => {
     const fetchUserData = async () => {
@@ -44,13 +30,29 @@ const Dashboard = () => {
 
       } catch (error) {
         console.log(error);
-
-
       }
     };
 
     fetchUserData();
   }, [session]);
+
+const getPets = async () => {
+  const userId = userData?.idUser; // Obtener el ID del usuario de la sesión
+  if (!userId) {
+    console.error("No se pudo obtener el ID del usuario");
+    return;
+  }
+
+  const res = await fetch(`${process.env.NEXT_PUBLIC_BACKEND_URL}/pets?userId=${userId}`, {
+    method: "GET",
+    headers: {
+      "Content-Type": "application/json",
+      authorization: `Bearer ${session?.user?.token}`,
+    },
+  });
+  const dataResultPets = await res.json();
+  setPetsData(dataResultPets); // Actualiza el estado con los datos obtenidos    
+};
 
 
   return (
@@ -73,12 +75,12 @@ const Dashboard = () => {
       </div>
 
 
-      <button onClick={getCats} className="btn btn-primary">Get Cats</button>
+      <button onClick={getPets} className="btn btn-primary">Get Cats</button>
       <div>
-        {catsData && (
+        {petsData && (
           <ul>
-            {catsData.map(cat => (
-              <li key={cat.idBreed}>Nombre: {cat.nameBreed}   </li> // Renderiza el nombre de cada gato
+            {petsData.map(pet => (
+              <li key={pet.idPet}>Nombre: {pet.namePet}   </li> // Renderiza el nombre de cada gato
             ))}
           </ul>
         )}

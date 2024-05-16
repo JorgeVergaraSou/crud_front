@@ -71,7 +71,7 @@ const Newpost = () => {
         <div className="centradito">
             <h1>Necesitas compartir tu idea? estás en el lugar ideal</h1>
             <form onSubmit={handleSubmit}>
-<span>Tipo de publicación</span>
+                <span>Tipo de publicación</span>
                 <select className="form-select">
                     <option value={0}>
                         SELECCIONE OPCIÓN
@@ -120,6 +120,8 @@ const Newpost = () => {
                     Register
                 </button>
             </form>
+
+
 
             {message.length > 0 && (
                 <div className="alert alert-danger mt-2">

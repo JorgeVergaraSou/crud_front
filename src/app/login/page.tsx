@@ -12,7 +12,7 @@ const LoginPage = () => {
   const router = useRouter();
 
   if (status === "loading") {
-    return <div className="loader-container"><div className="loader"></div> <div className="loader2"></div></div>;
+    return <div className="loader"></div>;
   }
   const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
