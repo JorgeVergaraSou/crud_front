@@ -123,6 +123,14 @@ a {
   justify-content: center;
 }
 
+.footercenter{
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  padding-top: 1%;
+}
+
 .backGroundDiv {
   background-color: #f5313140;
 }

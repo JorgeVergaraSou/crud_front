@@ -71,21 +71,21 @@ const Newpost = () => {
         <div className="centradito">
             <h1>Necesitas compartir tu idea? estás en el lugar ideal</h1>
             <form onSubmit={handleSubmit}>
-
-<select className="form-select">
-    <option value={0}>
-        SELECCIONE OPCIÓN
-    </option>
-   <option value={1}>
-    MASCOTA PERDIDA
-   </option>
-   <option value={2}>
-    OFREZCO MASCOTA EN ADOPCIÓN
-   </option>
-   <option value={3}>
-    QUIERO ADOPTAR
-   </option>
-</select>
+<span>Tipo de publicación</span>
+                <select className="form-select">
+                    <option value={0}>
+                        SELECCIONE OPCIÓN
+                    </option>
+                    <option value={1}>
+                        MASCOTA PERDIDA
+                    </option>
+                    <option value={2}>
+                        OFREZCO MASCOTA EN ADOPCIÓN
+                    </option>
+                    <option value={3}>
+                        QUIERO ADOPTAR
+                    </option>
+                </select>
 
                 <input
                     type="text"
